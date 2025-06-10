@@ -1,0 +1,152 @@
+object FAffecter: TFAffecter
+  Left = 0
+  Top = 0
+  Caption = 'FAffecter'
+  ClientHeight = 628
+  ClientWidth = 1078
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -28
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poDesktopCenter
+  TextHeight = 38
+  object Label1: TLabel
+    Left = 120
+    Top = 104
+    Width = 146
+    Height = 38
+    Caption = 'Prestation : '
+  end
+  object Label2: TLabel
+    Left = 120
+    Top = 192
+    Width = 128
+    Height = 38
+    Caption = 'Employ'#233' : '
+  end
+  object DBLookupComboBoxP: TDBLookupComboBox
+    Left = 312
+    Top = 104
+    Width = 281
+    Height = 46
+    KeyField = 'idPrestation'
+    ListField = 'Prestation'
+    ListSource = DataModule1.DSListePrestationClient
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 664
+    Top = 159
+    Width = 129
+    Height = 39
+    Caption = 'Affecter'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object DBLookupComboBoxE: TDBLookupComboBox
+    Left = 312
+    Top = 192
+    Width = 281
+    Height = 46
+    KeyField = 'idEmploye'
+    ListField = 'Employe'
+    ListSource = DataModule1.DSNomCompletEmploye
+    TabOrder = 2
+  end
+  object Button2: TButton
+    Left = 824
+    Top = 159
+    Width = 129
+    Height = 39
+    Caption = 'Annuler'
+    TabOrder = 3
+    OnClick = Button2Click
+  end
+  object DBGrid1: TDBGrid
+    Left = 120
+    Top = 360
+    Width = 833
+    Height = 233
+    DataSource = DataModule1.DSListeAffecter
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -28
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'idPrestation'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'idEmploye'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'idPrestation_1'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'date'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'adresse'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'status'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'prix'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'idService'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'idClient'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'idEmploye_1'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nom'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'prenom'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tel'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'email'
+        Visible = True
+      end>
+  end
+end

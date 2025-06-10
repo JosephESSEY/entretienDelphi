@@ -1,0 +1,94 @@
+object FService: TFService
+  Left = 0
+  Top = 0
+  Caption = 'FService'
+  ClientHeight = 631
+  ClientWidth = 1029
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -28
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poDesktopCenter
+  TextHeight = 38
+  object Label1: TLabel
+    Left = 72
+    Top = 104
+    Width = 83
+    Height = 38
+    Caption = 'Nom : '
+  end
+  object Label2: TLabel
+    Left = 72
+    Top = 208
+    Width = 141
+    Height = 38
+    Caption = 'Description'
+  end
+  object EdNomService: TEdit
+    Left = 256
+    Top = 96
+    Width = 289
+    Height = 46
+    TabOrder = 0
+  end
+  object EdDescriptionService: TEdit
+    Left = 256
+    Top = 200
+    Width = 289
+    Height = 46
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Left = 632
+    Top = 96
+    Width = 121
+    Height = 46
+    Caption = 'Ajouter'
+    TabOrder = 2
+    OnClick = Button1Click
+  end
+  object DBGrid1: TDBGrid
+    Left = 72
+    Top = 424
+    Width = 889
+    Height = 177
+    DataSource = DataModule1.DSListeService
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    TabOrder = 3
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -28
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
+  end
+  object Button2: TButton
+    Left = 840
+    Top = 101
+    Width = 121
+    Height = 46
+    Caption = 'Modifier'
+    TabOrder = 4
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 632
+    Top = 205
+    Width = 121
+    Height = 46
+    Caption = 'Supprimer'
+    TabOrder = 5
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 840
+    Top = 205
+    Width = 121
+    Height = 46
+    Caption = 'Annuler'
+    TabOrder = 6
+    OnClick = Button4Click
+  end
+end

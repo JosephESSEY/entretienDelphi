@@ -1,0 +1,121 @@
+object FEmploye: TFEmploye
+  Left = 0
+  Top = 0
+  Caption = 'FEmploye'
+  ClientHeight = 754
+  ClientWidth = 1038
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -28
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poDesktopCenter
+  TextHeight = 38
+  object Label1: TLabel
+    Left = 80
+    Top = 128
+    Width = 75
+    Height = 38
+    Caption = 'Nom :'
+  end
+  object Label2: TLabel
+    Left = 80
+    Top = 240
+    Width = 119
+    Height = 38
+    Caption = 'Pr'#233'nom : '
+  end
+  object Label3: TLabel
+    Left = 80
+    Top = 459
+    Width = 88
+    Height = 38
+    Caption = 'Email : '
+  end
+  object Label4: TLabel
+    Left = 80
+    Top = 355
+    Width = 56
+    Height = 38
+    Caption = 'Tel : '
+  end
+  object EdNom: TEdit
+    Left = 256
+    Top = 128
+    Width = 321
+    Height = 46
+    TabOrder = 0
+  end
+  object EdPrenom: TEdit
+    Left = 256
+    Top = 232
+    Width = 321
+    Height = 46
+    TabOrder = 1
+  end
+  object EdTel: TEdit
+    Left = 256
+    Top = 352
+    Width = 321
+    Height = 46
+    TabOrder = 2
+  end
+  object EdEmail: TEdit
+    Left = 256
+    Top = 456
+    Width = 321
+    Height = 46
+    TabOrder = 3
+  end
+  object DBGrid1: TDBGrid
+    Left = 80
+    Top = 592
+    Width = 897
+    Height = 160
+    DataSource = DataModule1.DSListeEmploye
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -28
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
+  end
+  object Button1: TButton
+    Left = 696
+    Top = 352
+    Width = 129
+    Height = 46
+    Caption = 'Supprimer'
+    TabOrder = 5
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 872
+    Top = 232
+    Width = 129
+    Height = 46
+    Caption = 'Modifier'
+    TabOrder = 6
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 696
+    Top = 232
+    Width = 129
+    Height = 46
+    Caption = 'Ajouter'
+    TabOrder = 7
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 872
+    Top = 352
+    Width = 129
+    Height = 46
+    Caption = 'Annuler'
+    TabOrder = 8
+    OnClick = Button4Click
+  end
+end

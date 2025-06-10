@@ -1,0 +1,61 @@
+unit DM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.ODBC,
+  FireDAC.Phys.ODBCDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TDataModule1 = class(TDataModule)
+    FDConnection1: TFDConnection;
+    QListeEmploye: TFDQuery;
+    QDeleteClient: TFDQuery;
+    QNomCompletEmploye: TFDQuery;
+    QInsertEmploye: TFDQuery;
+    QDeleteEmploye: TFDQuery;
+    QUpdateEmploye: TFDQuery;
+    QUpdateClient: TFDQuery;
+    QInsertClient: TFDQuery;
+    QNomCompletClient: TFDQuery;
+    QListeService: TFDQuery;
+    QListeClient: TFDQuery;
+    QInsertService: TFDQuery;
+    QUpdateService: TFDQuery;
+    QListePrestation: TFDQuery;
+    QInsertPrestation: TFDQuery;
+    QListeAffecter: TFDQuery;
+    QDeleteAffecter: TFDQuery;
+    QUpdatePrestation: TFDQuery;
+    QDeleteService: TFDQuery;
+    QUpdateAffecter: TFDQuery;
+    QInsertAffecter: TFDQuery;
+    QVerification: TFDQuery;
+    QDeletePrestation: TFDQuery;
+    DSListeAffecter: TDataSource;
+    DSListeEmploye: TDataSource;
+    DSListeService: TDataSource;
+    DSNomCompletClient: TDataSource;
+    DSListeClient: TDataSource;
+    DSListePrestation: TDataSource;
+    DSNomCompletEmploye: TDataSource;
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

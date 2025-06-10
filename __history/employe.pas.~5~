@@ -1,0 +1,87 @@
+unit employe;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  TFEmploye = class(TForm)
+    Label1: TLabel;
+    EdNom: TEdit;
+    Label2: TLabel;
+    EdPrenom: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    EdTel: TEdit;
+    EdEmail: TEdit;
+    DBGrid1: TDBGrid;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    procedure Button3Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+var
+  FEmploye: TFEmploye;
+
+implementation
+
+{$R *.dfm}
+
+uses DM;
+
+procedure TFEmploye.Button2Click(Sender: TObject);
+begin
+  with DataModule1.QUpdateEmploye do
+  begin
+    Close;
+    ParamByName('nom').AsString := EdNom.Text;
+    ParamByName('prenom').AsString := EdPrenom.Text;
+    ParamByName('tel').AsString := EdTel.Text;
+    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('value').AsInteger := DBGrid1.Fields[0].AsInteger;
+    ExecSQL;
+  end;
+    ShowMessage('Employé Modifié avec Succès');
+    EdNom.Text := '';
+    EdPrenom.Text := '';
+    EdTel.Text := '';
+    EdEmail.Text := '';
+    DataModule1.QListeEmploye.Close;
+    DataModule1.QListeEmploye.Open;
+    DataModule1.QListeAffecter.Close;
+    DataModule1.QListeAffecter.Open;
+end;
+
+procedure TFEmploye.Button3Click(Sender: TObject);
+begin
+  with DataModule1.QInsertEmploye do
+  begin
+    Close;
+    ParamByName('nom').AsString := EdNom.Text;
+    ParamByName('prenom').AsString := EdPrenom.Text;
+    ParamByName('tel').AsString := EdTel.Text;
+    ParamByName('email').AsString := EdEmail.Text;
+    ExecSQL;
+  end;
+    ShowMessage('Employé Inséré avec Succès');
+    EdNom.Text := '';
+    EdPrenom.Text := '';
+    EdTel.Text := '';
+    EdEmail.Text := '';
+    DataModule1.QListeEmploye.Close;
+    DataModule1.QListeEmploye.Open;
+    DataModule1.QListeAffecter.Close;
+    DataModule1.QListeAffecter.Open;
+end;
+
+end.

@@ -1,0 +1,14 @@
+program GestionEntretienAgency;
+
+uses
+  Vcl.Forms,
+  connexion in 'connexion.pas' {FConnexion};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFConnexion, FConnexion);
+  Application.Run;
+end.

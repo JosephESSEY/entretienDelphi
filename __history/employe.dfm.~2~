@@ -1,0 +1,14 @@
+object FEmploye: TFEmploye
+  Left = 0
+  Top = 0
+  Caption = 'FEmploye'
+  ClientHeight = 484
+  ClientWidth = 780
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+end

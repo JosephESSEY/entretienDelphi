@@ -1,0 +1,14 @@
+object FAffecter: TFAffecter
+  Left = 0
+  Top = 0
+  Caption = 'FAffecter'
+  ClientHeight = 424
+  ClientWidth = 618
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -28
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 38
+end

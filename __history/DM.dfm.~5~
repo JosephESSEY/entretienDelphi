@@ -1,0 +1,430 @@
+object DataModule1: TDataModule1
+  Height = 1080
+  Width = 1440
+  PixelsPerInch = 144
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=entretienAgency'
+      'User_Name=root'
+      'ODBCDriver=MySQL ODBC 3.51 Driver'
+      'DataSource=entretien'
+      'DriverID=ODBC')
+    Connected = True
+    LoginPrompt = False
+    Left = 488
+    Top = 8
+  end
+  object QListeEmploye: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * '
+      'FROM employe')
+    Left = 80
+    Top = 144
+  end
+  object QDeleteClient: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'DELETE from client '
+      'WHERE idClient = :value')
+    Left = 672
+    Top = 320
+    ParamData = <
+      item
+        Name = 'VALUE'
+        ParamType = ptInput
+      end>
+  end
+  object QNomCompletEmploye: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select idEmploye, CONCAT(nom, '#39' '#39' ,prenom) AS Employe'
+      'FROM employe')
+    Left = 824
+    Top = 152
+  end
+  object QInsertEmploye: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'INSERT INTO employe'
+      'VALUES(null, :nom, :prenom, :tel, :email)')
+    Left = 328
+    Top = 152
+    ParamData = <
+      item
+        Name = 'NOM'
+        ParamType = ptInput
+      end
+      item
+        Name = 'PRENOM'
+        ParamType = ptInput
+      end
+      item
+        Name = 'TEL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'EMAIL'
+        ParamType = ptInput
+      end>
+  end
+  object QDeleteEmploye: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'DELETE FROM employe'
+      'WHERE idEmploye = :value')
+    Left = 648
+    Top = 152
+    ParamData = <
+      item
+        Name = 'VALUE'
+        ParamType = ptInput
+      end>
+  end
+  object QUpdateEmploye: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'UPDATE employe'
+      'SET nom = :nom, '
+      'prenom = :prenom,'
+      'email = :email,'
+      'tel = :tel'
+      'WHERE idEmploye = :value')
+    Left = 480
+    Top = 152
+    ParamData = <
+      item
+        Name = 'NOM'
+        ParamType = ptInput
+      end
+      item
+        Name = 'PRENOM'
+        ParamType = ptInput
+      end
+      item
+        Name = 'EMAIL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'TEL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'VALUE'
+        ParamType = ptInput
+      end>
+  end
+  object QUpdateClient: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'UPDATE client'
+      'set nom = :nom, prenom = :prenom, tel = :tel'
+      'WHERE idClient = :value'
+      '')
+    Left = 488
+    Top = 320
+    ParamData = <
+      item
+        Name = 'NOM'
+        ParamType = ptInput
+      end
+      item
+        Name = 'PRENOM'
+        ParamType = ptInput
+      end
+      item
+        Name = 'TEL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'VALUE'
+        ParamType = ptInput
+      end>
+  end
+  object QInsertClient: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'INSERT INTO client'
+      'VALUES(:null, :nom, :prenom, :tel)')
+    Left = 336
+    Top = 320
+    ParamData = <
+      item
+        Name = 'NULL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NOM'
+        ParamType = ptInput
+      end
+      item
+        Name = 'PRENOM'
+        ParamType = ptInput
+      end
+      item
+        Name = 'TEL'
+        ParamType = ptInput
+      end>
+  end
+  object QNomCompletClient: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select idClient, CONCAT(nom, '#39' '#39' ,prenom) AS Client'
+      'FROM client')
+    Left = 840
+    Top = 312
+  end
+  object QListeService: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select *'
+      'from service')
+    Left = 64
+    Top = 456
+  end
+  object QListeClient: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * '
+      'FROM client')
+    Left = 72
+    Top = 312
+  end
+  object QInsertService: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'insert into service'
+      'values(:nomService, :descriptionService)')
+    Left = 336
+    Top = 456
+    ParamData = <
+      item
+        Name = 'NOMSERVICE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'DESCRIPTIONSERVICE'
+        ParamType = ptInput
+      end>
+  end
+  object QUpdateService: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'update service'
+      
+        'set nomService = :nomService, descriptionService = :descriptionS' +
+        'ervice'
+      'Where idService = :value')
+    Left = 488
+    Top = 456
+    ParamData = <
+      item
+        Name = 'NOMSERVICE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'DESCRIPTIONSERVICE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'VALUE'
+        ParamType = ptInput
+      end>
+  end
+  object QListePrestation: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'Select *'
+      'from prestation p'
+      'join client c on c.idClient = p.idClient'
+      'Join service s on s.idService = p.idService')
+    Left = 64
+    Top = 584
+  end
+  object QInsertPrestation: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'insert into prestation'
+      
+        'values(:null, :date, :adresse, :status, :prix, idService, :idCli' +
+        'ent);')
+    Left = 384
+    Top = 600
+    ParamData = <
+      item
+        Name = 'NULL'
+        ParamType = ptInput
+      end
+      item
+        Name = 'DATE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ADRESSE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'STATUS'
+        ParamType = ptInput
+      end
+      item
+        Name = 'PRIX'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IDCLIENT'
+        ParamType = ptInput
+      end>
+  end
+  object QListeAffecter: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select *'
+      'from affecter a'
+      'join prestation p on p.idPrestation = a.idPrestation'
+      'join employe e on e.idEmploye = a.idEmploye')
+    Left = 64
+    Top = 744
+  end
+  object QDeleteAffecter: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'delete from affecter'
+      'where idPrestation = :idPrestation and'
+      'idEmploye = :idEmploye')
+    Left = 496
+    Top = 736
+    ParamData = <
+      item
+        Name = 'IDPRESTATION'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IDEMPLOYE'
+        ParamType = ptInput
+      end>
+  end
+  object QUpdatePrestation: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'update prestation'
+      
+        'set date = :date, adresse = :adresse, status = :status, prix = :' +
+        'prix, idService = :idService, idClient = :idClient'
+      'Where idPrestation = :value')
+    Left = 536
+    Top = 592
+    ParamData = <
+      item
+        Name = 'DATE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ADRESSE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'STATUS'
+        ParamType = ptInput
+      end
+      item
+        Name = 'PRIX'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IDSERVICE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IDCLIENT'
+        ParamType = ptInput
+      end
+      item
+        Name = 'VALUE'
+        ParamType = ptInput
+      end>
+  end
+  object QDeleteService: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'delete from service '
+      'where idService = :value')
+    Left = 664
+    Top = 464
+    ParamData = <
+      item
+        Name = 'VALUE'
+        ParamType = ptInput
+      end>
+  end
+  object QInsertAffecter: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'insert into affecter'
+      'values(:idPrestation, :idEmploye)')
+    Left = 328
+    Top = 752
+    ParamData = <
+      item
+        Name = 'IDPRESTATION'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IDEMPLOYE'
+        ParamType = ptInput
+      end>
+  end
+  object QVerification: TFDQuery
+    Connection = FDConnection1
+    Left = 232
+    Top = 32
+  end
+  object QDeletePrestation: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'delete from prestation'
+      'where idPrestation = :value')
+    Left = 728
+    Top = 584
+    ParamData = <
+      item
+        Name = 'VALUE'
+        ParamType = ptInput
+      end>
+  end
+  object DSListeAffecter: TDataSource
+    DataSet = QListeAffecter
+    Left = 184
+    Top = 752
+  end
+  object DSListeEmploye: TDataSource
+    DataSet = QListeEmploye
+    Left = 216
+    Top = 160
+  end
+  object DSListeService: TDataSource
+    DataSet = QListeService
+    Left = 184
+    Top = 480
+  end
+  object DSNomCompletClient: TDataSource
+    DataSet = QNomCompletClient
+    Left = 1008
+    Top = 312
+  end
+  object DSListeClient: TDataSource
+    DataSet = QListeClient
+    Left = 200
+    Top = 320
+  end
+  object DSListePrestation: TDataSource
+    DataSet = QListePrestation
+    Left = 208
+    Top = 608
+  end
+  object DSNomCompletEmploye: TDataSource
+    DataSet = QNomCompletEmploye
+    Left = 1000
+    Top = 144
+  end
+end

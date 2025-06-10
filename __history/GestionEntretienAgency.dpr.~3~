@@ -1,0 +1,16 @@
+program GestionEntretienAgency;
+
+uses
+  Vcl.Forms,
+  connexion in 'connexion.pas' {FConnexion},
+  DM in 'DM.pas' {DataModule1: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFConnexion, FConnexion);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.Run;
+end.

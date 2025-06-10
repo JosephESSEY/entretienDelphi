@@ -1,0 +1,110 @@
+unit service;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls;
+
+type
+  TFService = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    EdNomService: TEdit;
+    EdDescriptionService: TEdit;
+    Button1: TButton;
+    DBGrid1: TDBGrid;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    procedure DBGrid1CellClick(Column: TColumn);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+var
+  FService: TFService;
+
+implementation
+
+{$R *.dfm}
+
+uses DM;
+
+procedure TFService.Button1Click(Sender: TObject);
+begin
+  with DataModule1.QInsertService do
+  begin
+    Close;
+    ParamByName('nomService').AsString := EdNomService.Text;
+    ParamByName('descriptionService').AsString := EdDescriptionService.Text;
+    ExecSQL;
+  end;
+    ShowMessage('Service Inséré avec Succès');
+    EdNomService.Text := '';
+    EdDescriptionService.Text := '';
+    DataModule1.QListeService.Close;
+    DataModule1.QListeService.Open;
+    DataModule1.QListePrestation.Close;
+    DataModule1.QListePrestation.Open;
+end;
+
+procedure TFService.Button2Click(Sender: TObject);
+begin
+  with DataModule1.QUpdateService do
+  begin
+    Close;
+    ParamByName('nomService').AsString := EdNomService.Text;
+    ParamByName('descriptionService').AsString := EdDescriptionService.Text;
+    ParamByName('value').AsInteger := DBGrid1.Fields[0].AsInteger;
+    ExecSQL;
+  end;
+    ShowMessage('Service Modifié avec Succès');
+    EdNomService.Text := '';
+    EdDescriptionService.Text := '';
+    DataModule1.QListeService.Close;
+    DataModule1.QListeService.Open;
+    DataModule1.QListePrestation.Close;
+    DataModule1.QListePrestation.Open;
+end;
+
+procedure TFService.Button3Click(Sender: TObject);
+begin
+  if (MessageDlg('Voulez vous vraiment supprimer l''enregistrement ?', mtConfirmation, [mbYes,mbNo], 0) = MrYes) then
+  begin
+     with DataModule1.QDeleteService do
+    begin
+      Close;
+      ParamByName('value').AsInteger := DBGrid1.Fields[0].AsInteger;
+      ExecSQL;
+    end;
+    ShowMessage('Service Supprimé avec Succès');
+    EdNomService.Text := '';
+    EdDescriptionService.Text := '';
+    DataModule1.QListeService.Close;
+    DataModule1.QListeService.Open;
+    DataModule1.QListePrestation.Close;
+    DataModule1.QListePrestation.Open;
+  end;
+end;
+
+procedure TFService.Button4Click(Sender: TObject);
+begin
+  EdNomService.Text := '';
+  EdDescriptionService.Text := '';
+end;
+
+procedure TFService.DBGrid1CellClick(Column: TColumn);
+begin
+  EdNomService.Text := DBGrid1.Fields[1].Value;
+  EdDescriptionService.Text := DBGrid1.Fields[2].Value;
+end;
+
+end.

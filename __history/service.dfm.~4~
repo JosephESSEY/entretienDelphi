@@ -1,0 +1,15 @@
+object FService: TFService
+  Left = 0
+  Top = 0
+  Caption = 'FService'
+  ClientHeight = 424
+  ClientWidth = 618
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -28
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poDesktopCenter
+  TextHeight = 38
+end
